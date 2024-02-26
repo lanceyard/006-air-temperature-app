@@ -1,8 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // presentation
+import 'package:flutter/services.dart';
 import 'package:suhu_udara/presentation/home_screen/home_page.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseDatabase database = FirebaseDatabase.instance;
   // main will always not be reloaded
   runApp(const SuhuMaterial());
 }

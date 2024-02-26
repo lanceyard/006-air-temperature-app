@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "379990785142",
+    "firebase_url": "https://my-green-house-45206-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "my-green-house-45206",
+    "storage_bucket": "my-green-house-45206.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379990785142:android:9b1d3fa92792d56f4fb357",
+        "android_client_info": {
+          "package_name": "com.jockeys.suhu_udara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFp26mPj_mo9f6kfOqUvFSmtiTt4gupWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
