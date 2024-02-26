@@ -14,8 +14,7 @@ class _HeaderSectionState extends State<HeaderSection> {
   @override
   void initState() {
     // TODO: implement initState
-    DatabaseReference airHumidity =
-        FirebaseDatabase.instance.ref('airHumidity');
+    DatabaseReference airHumidity = FirebaseDatabase.instance.ref();
     airHumidity.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value;
       print("Debug: $data");
