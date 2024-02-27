@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Colors.lightGreen[200],
+        indicatorColor: Color(0xFF86E779),
         backgroundColor: Color(0xfff6fff8),
         selectedIndex: currentPageIndex,
         surfaceTintColor: Colors.transparent,
