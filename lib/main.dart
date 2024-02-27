@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:suhu_udara/presentation/home_screen/home_page.dart';
+import 'package:suhu_udara/provider/controller_provider.dart';
+import 'package:suhu_udara/provider/counter_provider.dart';
 
 import 'firebase_options.dart';
 
@@ -11,7 +13,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseDatabase database = FirebaseDatabase.instance;
   // main will always not be reloaded
   runApp(const SuhuMaterial());
 }
@@ -33,9 +34,15 @@ class SuhuMaterial extends StatelessWidget {
       // statusBarColor: Color(0xFF86E779)
     ));
 
-    return const MaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CounterProvider()),
+        ChangeNotifierProvider(create: (context) => ControllerProvider())
+      ],
+      child: const MaterialApp(
+        home: Home(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

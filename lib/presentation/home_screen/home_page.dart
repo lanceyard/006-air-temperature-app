@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suhu_udara/presentation/fuzzy_screen/fuzzy_page.dart';
+import 'package:suhu_udara/presentation/home_screen/body_section.dart';
 import 'package:suhu_udara/presentation/home_screen/header_section.dart';
+import 'package:suhu_udara/provider/controller_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,20 +21,19 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       body: <Widget>[
         // Here's the body
-        SingleChildScrollView(
+        // Separate it to each page again
+        const SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
               // header
               HeaderSection(),
-
-              // body
-              Text("Here's the body")
+              BodySection()
             ],
           ),
         ),
-        Text("Here's the body"),
-        Text("Here's the ")
+        FuzzyPage(),
+        Text("Here's the Setting")
       ][currentPageIndex],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -59,6 +62,10 @@ class _HomeState extends State<Home> {
             label: 'Setting',
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.read<ControllerProvider>().getEverything(),
+        child: Icon(Icons.ac_unit_outlined),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class HeaderSection extends StatefulWidget {
@@ -9,19 +8,6 @@ class HeaderSection extends StatefulWidget {
 }
 
 class _HeaderSectionState extends State<HeaderSection> {
-  late DatabaseReference _ref;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    DatabaseReference airHumidity = FirebaseDatabase.instance.ref();
-    airHumidity.onValue.listen((DatabaseEvent event) {
-      final data = event.snapshot.value;
-      print("Debug: $data");
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,12 +15,12 @@ class _HeaderSectionState extends State<HeaderSection> {
       color: Colors.white,
     );
     return SizedBox(
-      height: size.height * 0.50,
+      height: size.height * 0.40,
       child: Stack(
         children: [
           // green thingy container
           Container(
-            height: size.height * 0.50 - 25,
+            height: size.height * 0.40 - 15,
             width: double.infinity,
             decoration: const BoxDecoration(
                 color: Color(0xFF86E779),
@@ -53,6 +39,9 @@ class _HeaderSectionState extends State<HeaderSection> {
                     fontSize: 20,
                   ),
                 ),
+
+                // body of the after search field, greeny thing background white
+                // container
                 Container(
                   margin:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -84,11 +73,9 @@ class _HeaderSectionState extends State<HeaderSection> {
                   ),
                 ),
 
-                // body of the after search field, greeny thing background white
-                // container
                 Container(
                   width: double.infinity,
-                  height: size.height * 0.25,
+                  height: size.height * 0.17,
                   decoration: const BoxDecoration(
                       color: Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -125,16 +112,11 @@ class _HeaderSectionState extends State<HeaderSection> {
                           ),
                           Text("Size"),
                           Text("4 x 5 cm"),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
-                          Text("Air Humidity"),
-                          Text("here"),
                         ],
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
