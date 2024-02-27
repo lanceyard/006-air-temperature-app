@@ -82,9 +82,11 @@ class _HeaderSectionState extends State<HeaderSection> {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // first column
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.connected_tv),
                           Text("Connected"),
@@ -93,6 +95,7 @@ class _HeaderSectionState extends State<HeaderSection> {
 
                       // second column
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Location"),
                           Text("Jember, Indonesia"),
@@ -104,6 +107,7 @@ class _HeaderSectionState extends State<HeaderSection> {
                         ],
                       ),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Plants"),
                           Text("Tomatoes"),
