@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:suhu_udara/provider/counter_provider.dart';
+import 'package:suhu_udara/logic/provider/counter_provider.dart';
 
 class FuzzyPage extends StatefulWidget {
   const FuzzyPage({super.key});

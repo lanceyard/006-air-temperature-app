@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suhu_udara/logic/provider/controller_provider.dart';
 import 'package:suhu_udara/presentation/fuzzy_screen/fuzzy_page.dart';
 import 'package:suhu_udara/presentation/home_screen/body_section.dart';
 import 'package:suhu_udara/presentation/home_screen/header_section.dart';
@@ -12,6 +14,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentPageIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    context.read<ControllerProvider>().getEverything();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

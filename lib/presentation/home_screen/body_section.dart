@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suhu_udara/logic/provider/controller_provider.dart';
 import 'package:suhu_udara/presentation/utils/custom_widgets.dart';
 
 class BodySection extends StatelessWidget {
@@ -6,7 +8,7 @@ class BodySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
         padding: EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -16,11 +18,14 @@ class BodySection extends StatelessWidget {
                 ExpandedContainer(children: [
                   Icon(Icons.thermostat_outlined),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("data"),
+                        Text(context
+                            .watch<ControllerProvider>()
+                            .airTemp
+                            .toString()),
                         Text(
                           "Air Temperature",
                           style: TextStyle(color: Colors.black),
@@ -37,7 +42,10 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("data"),
+                      Text(context
+                          .watch<ControllerProvider>()
+                          .airHumidity
+                          .toString()),
                       Text(
                         "Air Humidity",
                         style: TextStyle(color: Colors.black),
@@ -54,7 +62,10 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("data"),
+                      Text(context
+                          .watch<ControllerProvider>()
+                          .pHLevel
+                          .toString()),
                       Text(
                         "pH Levels",
                         style: TextStyle(color: Colors.black),

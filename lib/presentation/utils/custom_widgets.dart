@@ -19,7 +19,9 @@ class _ExpandedContainerState extends State<ExpandedContainer> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: widget.padding,
+        padding: widget.padding != null
+            ? widget.padding
+            : EdgeInsets.symmetric(horizontal: 8),
         margin: EdgeInsets.symmetric(vertical: 10),
         height: 80.0,
         // Set your desired height
@@ -29,7 +31,7 @@ class _ExpandedContainerState extends State<ExpandedContainer> {
           borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: widget.children,
         ),
       ),
