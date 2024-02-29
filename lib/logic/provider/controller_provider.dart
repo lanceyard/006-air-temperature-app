@@ -6,11 +6,19 @@ class ControllerProvider extends ChangeNotifier {
   int airTemp;
   int airHumidity;
   int pHLevel;
+  int waterReservoir;
+  int soilMoisture;
+  bool roofMoverStatus;
+  bool wateringStatus;
 
   ControllerProvider({
     this.airTemp = 0,
     this.airHumidity = 0,
     this.pHLevel = 0,
+    this.waterReservoir = 0,
+    this.soilMoisture = 0,
+    this.roofMoverStatus = false,
+    this.wateringStatus = false,
   });
 
   void getEverything() {
@@ -23,6 +31,10 @@ class ControllerProvider extends ChangeNotifier {
       airTemp = converted.airTemperature?.toInt() ?? 0;
       airHumidity = converted.airHumidity?.toInt() ?? 0;
       pHLevel = converted.pHLevel?.toInt() ?? 0;
+      waterReservoir = converted.waterReservoir?.toInt() ?? 0;
+      soilMoisture = converted.soilMoisture?.toInt() ?? 0;
+      roofMoverStatus = converted.roofMoverStatus ?? false;
+      wateringStatus = converted.wateringStatus ?? false;
       notifyListeners();
     });
   }

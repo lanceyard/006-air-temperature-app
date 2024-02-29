@@ -81,7 +81,7 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("data"),
+                      Text("???"),
                       Text(
                         "Lighting",
                         style: TextStyle(color: Colors.black),
@@ -98,7 +98,10 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("data"),
+                      Text(context
+                          .watch<ControllerProvider>()
+                          .waterReservoir
+                          .toString()),
                       Text(
                         "Soil Moisture",
                         style: TextStyle(color: Colors.black),
@@ -114,7 +117,10 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("data"),
+                      Text(context
+                          .watch<ControllerProvider>()
+                          .waterReservoir
+                          .toString()),
                       Text(
                         "Water Reservoir",
                         style: TextStyle(color: Colors.black),
@@ -136,7 +142,9 @@ class BodySection extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text("Enabled")
+                      Text(context.watch<ControllerProvider>().roofMoverStatus
+                          ? "Enabled"
+                          : "Disabled")
                     ]),
               ],
             ),
@@ -152,7 +160,9 @@ class BodySection extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text("Enabled")
+                      Text(context.watch<ControllerProvider>().wateringStatus
+                          ? "Enabled"
+                          : "Disabled")
                     ]),
               ],
             ),
