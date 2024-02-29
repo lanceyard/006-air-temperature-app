@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:suhu_udara/logic/provider/controller_provider.dart';
-import 'package:suhu_udara/logic/provider/counter_provider.dart';
 import 'package:suhu_udara/presentation/home_screen/home_page.dart';
 
 import 'firebase_options.dart';
@@ -36,8 +35,7 @@ class SuhuMaterial extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CounterProvider()),
-        ChangeNotifierProvider(create: (context) => ControllerProvider())
+        ChangeNotifierProvider(create: (context) => ControllerProvider()),
       ],
       child: const MaterialApp(
         home: Home(),

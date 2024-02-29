@@ -4,6 +4,7 @@ import 'package:suhu_udara/logic/provider/controller_provider.dart';
 import 'package:suhu_udara/presentation/fuzzy_screen/fuzzy_page.dart';
 import 'package:suhu_udara/presentation/home_screen/body_section.dart';
 import 'package:suhu_udara/presentation/home_screen/header_section.dart';
+import 'package:suhu_udara/presentation/setting_screen/setting_page.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -40,7 +41,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         FuzzyPage(),
-        Text("Here's the Setting")
+        SettingPage()
       ][currentPageIndex],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {

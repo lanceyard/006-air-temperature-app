@@ -81,7 +81,6 @@ class BodySection extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("???"),
                       Text(
                         "Lighting",
                         style: TextStyle(color: Colors.black),

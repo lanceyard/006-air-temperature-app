@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class FuzzyPage extends StatefulWidget {
-  const FuzzyPage({super.key});
+class SettingPage extends StatefulWidget {
+  const SettingPage({super.key});
 
   @override
-  State<FuzzyPage> createState() => _FuzzyPageState();
+  State<SettingPage> createState() => _SettingPageState();
 }
 
-class _FuzzyPageState extends State<FuzzyPage> {
+class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [Text("Hi")],
+          children: [Text("Hi lol")],
         ),
       ),
     );
