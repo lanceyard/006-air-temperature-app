@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:suhu_udara/logic/provider/controller_provider.dart';
+import 'package:suhu_udara/logic/provider/firebase_provider.dart';
 import 'package:suhu_udara/presentation/utils/custom_widgets.dart';
 
 class BodySection extends StatelessWidget {
@@ -9,163 +9,136 @@ class BodySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: [
-                ExpandedContainer(children: [
-                  Icon(Icons.thermostat_outlined),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child:
+            Consumer<FirebaseDataProvider>(builder: (context, provider, child) {
+          final data = provider.firebaseData;
+          if (data == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  ExpandedContainer(children: [
+                    const Icon(Icons.thermostat_outlined),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("${data.airTemperature}°"),
+                          const Text(
+                            "Air Temperature",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ExpandedContainer(children: [
+                    const Icon(Icons.water_damage),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(context
-                            .watch<ControllerProvider>()
-                            .airTemp
-                            .toString()),
-                        Text(
-                          "Air Temperature",
+                        Text(data.airHumidity.toString()),
+                        const Text(
+                          "Air Humidity",
                           style: TextStyle(color: Colors.black),
                         ),
                       ],
                     ),
-                  ),
-                ]),
-                SizedBox(
-                  width: 10,
-                ),
-                ExpandedContainer(children: [
-                  Icon(Icons.water_damage),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(context
-                          .watch<ControllerProvider>()
-                          .airHumidity
-                          .toString()),
-                      Text(
-                        "Air Humidity",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ]),
-              ],
-            ),
-            Row(
-              children: [
-                ExpandedContainer(children: [
-                  Icon(Icons.water_drop_rounded),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(context
-                          .watch<ControllerProvider>()
-                          .pHLevel
-                          .toString()),
-                      Text(
-                        "pH Levels",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ]),
-                SizedBox(
-                  width: 10,
-                ),
-                ExpandedContainer(children: [
-                  Icon(Icons.light_mode_outlined),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Lighting",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ]),
-              ],
-            ),
-            Row(
-              children: [
-                ExpandedContainer(children: [
-                  Icon(Icons.account_tree_outlined),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(context
-                          .watch<ControllerProvider>()
-                          .waterReservoir
-                          .toString()),
-                      Text(
-                        "Soil Moisture",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ]),
-                SizedBox(
-                  width: 10,
-                ),
-                ExpandedContainer(children: [
-                  Icon(Icons.water_outlined),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(context
-                          .watch<ControllerProvider>()
-                          .waterReservoir
-                          .toString()),
-                      Text(
-                        "Water Reservoir",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ]),
-              ],
-            ),
-            Row(
-              children: [
-                ExpandedContainer(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Text("Roof Mower"),
-                          ],
+                  ]),
+                ],
+              ),
+              Row(
+                children: [
+                  ExpandedContainer(children: [
+                    const Icon(Icons.water_drop_rounded),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data.isRaining ? "Yes" : "No"),
+                        const Text(
+                          "Is Raining",
+                          style: TextStyle(color: Colors.black),
                         ),
-                      ),
-                      Text(context.watch<ControllerProvider>().roofMoverStatus
-                          ? "Enabled"
-                          : "Disabled")
-                    ]),
-              ],
-            ),
-            Row(
-              children: [
-                ExpandedContainer(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Text("Watering"),
-                          ],
+                      ],
+                    ),
+                  ]),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ExpandedContainer(children: [
+                    const Icon(Icons.light_mode_outlined),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data.lightIntensity.toString()),
+                        const Text(
+                          "Light Intensity",
+                          style: TextStyle(color: Colors.black),
                         ),
-                      ),
-                      Text(context.watch<ControllerProvider>().wateringStatus
-                          ? "Enabled"
-                          : "Disabled")
-                    ]),
-              ],
-            ),
-          ],
-        ));
+                      ],
+                    ),
+                  ]),
+                ],
+              ),
+              Row(
+                children: [
+                  ExpandedContainer(children: [
+                    const Icon(Icons.account_tree_outlined),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data.soilMoisture),
+                        const Text(
+                          "Soil Moisture",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  ExpandedContainer(children: [
+                    const Icon(Icons.roofing),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data.roofMoverStatus ? "Open" : "Closed"),
+                        const Text(
+                          "Roof Mover Status",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ],
+              ),
+              SwitchListTile(
+                title: const Text('Roof Mover State'),
+                value: data.roofMoverStatus,
+                onChanged: (value) {
+                  provider.updateRoofMoverStatus(value);
+                },
+              ),
+            ],
+          );
+        }));
   }
 }

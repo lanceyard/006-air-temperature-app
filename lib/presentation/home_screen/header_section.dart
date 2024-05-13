@@ -11,7 +11,7 @@ class _HeaderSectionState extends State<HeaderSection> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    TextStyle textWhite = TextStyle(
+    TextStyle textWhite = const TextStyle(
       color: Colors.white,
     );
     return SizedBox(
@@ -85,37 +85,39 @@ class _HeaderSectionState extends State<HeaderSection> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // first column
-                      Column(
+                      const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.connected_tv),
                           Text("Connected"),
                         ],
                       ),
+                      const SizedBox(width: 30,),
 
                       // second column
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Location"),
-                          Text("Jember, Indonesia"),
+                          const Text("Location"),
+                          const Text("Jember"),
                           SizedBox(
                             height: size.height * 0.02,
                           ),
-                          Text("Type"),
-                          Text("Skillion"),
+                          const Text("Type"),
+                          const Text("Skillion"),
                         ],
                       ),
+                      const SizedBox(width: 30,),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Plants"),
-                          Text("Tomatoes"),
+                          const Text("Plants"),
+                          const Text("Tomatoes"),
                           SizedBox(
                             height: size.height * 0.02,
                           ),
-                          Text("Size"),
-                          Text("4 x 5 cm"),
+                          const Text("Size"),
+                          const Text("4 x 5 cm"),
                         ],
                       ),
                     ],
