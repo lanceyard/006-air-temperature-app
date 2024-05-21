@@ -116,10 +116,11 @@ class BodySection extends StatelessWidget {
                       ],
                     ),
                   ]),
-                  const SizedBox(width: 10,),
-                  ExpandedContainer(
-                  height: 80,
-                  children: [
+                ],
+              ),
+              Row(
+                children: [
+                  ExpandedContainer(height: 80, children: [
                     const Icon(Icons.water_drop_rounded),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
