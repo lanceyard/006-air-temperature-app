@@ -8,6 +8,7 @@ import 'package:suhu_udara/presentation/home_screen/home_page.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
+  await Future.delayed(const Duration(milliseconds: 1500));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
