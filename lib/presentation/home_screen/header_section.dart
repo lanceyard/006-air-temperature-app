@@ -17,12 +17,12 @@ class _HeaderSectionState extends State<HeaderSection> {
       color: Colors.white,
     );
     return SizedBox(
-      height: size.height * 0.40,
+      height: size.height * 0.40 - 70,
       child: Stack(
         children: [
           // green thingy container
           Container(
-            height: size.height * 0.40 - 15,
+            height: size.height * 0.40 - 80,
             width: double.infinity,
             decoration: const BoxDecoration(
                 color: Color(0xFF86E779),
@@ -44,36 +44,36 @@ class _HeaderSectionState extends State<HeaderSection> {
 
                 // body of the after search field, greeny thing background white
                 // container
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                  child: TextField(
-                    onEditingComplete: () {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                    },
-                    controller: null,
-                    decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 10.0),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Colors.black, width: 2),
-                            borderRadius: BorderRadius.circular(16)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.black12, width: 1),
-                            borderRadius: BorderRadius.circular(30)),
-                        prefixIcon: IconButton(
-                          icon: const Icon(Icons.search),
-                          color: Colors.lightGreen,
-                          onPressed: () {
-                            // search disini
-                          },
-                        ),
-                        fillColor: Colors.white,
-                        filled: true),
-                  ),
-                ),
+                // Container(
+                //   margin:
+                //       const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                //   child: TextField(
+                //     onEditingComplete: () {
+                //       FocusManager.instance.primaryFocus?.unfocus();
+                //     },
+                //     controller: null,
+                //     decoration: InputDecoration(
+                //         contentPadding: const EdgeInsets.symmetric(
+                //             horizontal: 20.0, vertical: 10.0),
+                //         focusedBorder: OutlineInputBorder(
+                //             borderSide:
+                //                 const BorderSide(color: Colors.black, width: 2),
+                //             borderRadius: BorderRadius.circular(16)),
+                //         enabledBorder: OutlineInputBorder(
+                //             borderSide: const BorderSide(
+                //                 color: Colors.black12, width: 1),
+                //             borderRadius: BorderRadius.circular(30)),
+                //         prefixIcon: IconButton(
+                //           icon: const Icon(Icons.search),
+                //           color: Colors.lightGreen,
+                //           onPressed: () {
+                //             // search disini
+                //           },
+                //         ),
+                //         fillColor: Colors.white,
+                //         filled: true),
+                //   ),
+                // ),
 
                 Container(
                   width: double.infinity,

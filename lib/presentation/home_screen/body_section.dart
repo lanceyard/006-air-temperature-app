@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:suhu_udara/logic/provider/firebase_provider.dart';
+import 'package:suhu_udara/presentation/utils/colors.dart';
 import 'package:suhu_udara/presentation/utils/custom_widgets.dart';
 
 class BodySection extends StatelessWidget {
@@ -25,76 +26,84 @@ class BodySection extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  ExpandedContainer(children: [
-                    const Icon(Icons.thermostat_outlined),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("${data.airTemperature}°"),
-                          const Text(
-                            "Air Temperature",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ExpandedContainer(children: [
-                    const Icon(Icons.water_damage),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(data.airHumidity.toString()),
-                        const Text(
-                          "Air Humidity",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ]),
+                  // ExpandedContainer(
+                  // height: 80,
+                  // children: [
+                  //   const Icon(Icons.thermostat_outlined),
+                  //   Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  //     child: Column(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Text("${data.airTemperature}°"),
+                  //         const Text(
+                  //           "Air Temperature",
+                  //           style: TextStyle(color: Colors.black),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ]),
+                  // const SizedBox(
+                  //   width: 10,
+                  // ),
+                  // ExpandedContainer(
+                  // height: 80,
+                  // children: [
+                  //   const Icon(Icons.water_damage),
+                  //   Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Text(data.airHumidity.toString()),
+                  //       const Text(
+                  //         "Air Humidity",
+                  //         style: TextStyle(color: Colors.black),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ]),
                 ],
               ),
+              // Row(
+              //   children: [
+              //     ExpandedContainer(
+              //     height: 80,
+              //     children: [
+              //       const Icon(Icons.water_drop_rounded),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Text(data.isRaining ? "Yes" : "No"),
+              //           const Text(
+              //             "Is Raining",
+              //             style: TextStyle(color: Colors.black),
+              //           ),
+              //         ],
+              //       ),
+              //     ]),
+              //     const SizedBox(
+              //       width: 10,
+              //     ),
+              //     ExpandedContainer(
+              //     height: 80,
+              //     children: [
+              //       const Icon(Icons.light_mode_outlined),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Text(data.lightIntensity.toString()),
+              //           const Text(
+              //             "Light Intensity",
+              //             style: TextStyle(color: Colors.black),
+              //           ),
+              //         ],
+              //       ),
+              //     ]),
+              //   ],
+              // ),
               Row(
                 children: [
-                  ExpandedContainer(children: [
-                    const Icon(Icons.water_drop_rounded),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(data.isRaining ? "Yes" : "No"),
-                        const Text(
-                          "Is Raining",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ]),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ExpandedContainer(children: [
-                    const Icon(Icons.light_mode_outlined),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(data.lightIntensity.toString()),
-                        const Text(
-                          "Light Intensity",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ]),
-                ],
-              ),
-              Row(
-                children: [
-                  ExpandedContainer(children: [
+                  ExpandedContainer(height: 80, children: [
                     const Icon(Icons.account_tree_outlined),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -107,38 +116,49 @@ class BodySection extends StatelessWidget {
                       ],
                     ),
                   ]),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  ExpandedContainer(children: [
-                    const Icon(Icons.roofing),
+                  const SizedBox(width: 10,),
+                  ExpandedContainer(
+                  height: 80,
+                  children: [
+                    const Icon(Icons.water_drop_rounded),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(data.roofMoverStatus ? "Open" : "Closed"),
+                        Text(data.isRaining ? "Yes" : "No"),
                         const Text(
-                          "Roof Mover Status",
+                          "Is Raining",
                           style: TextStyle(color: Colors.black),
                         ),
                       ],
                     ),
                   ]),
-                  const SizedBox(
-                    width: 10,
-                  ),
                 ],
               ),
-              SwitchListTile(
-                title: const Text('Roof Mover State'),
-                value: data.roofMoverStatus,
-                onChanged: (value) {
-                  provider.updateRoofMoverStatus(value);
-                },
-              ),
+              // Row(
+              //   children: [
+              //     ExpandedContainer(height: 80, children: [
+              //       const Icon(Icons.roofing),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Text(data.roofMoverStatus ? "Open" : "Closed"),
+              //           const Text(
+              //             "Roof Mover Status",
+              //             style: TextStyle(color: Colors.black),
+              //           ),
+              //         ],
+              //       ),
+              //     ]),
+              //   ],
+              // ),
+              // SwitchListTile(
+              //   activeColor: justGreen,
+              //   title: const Text('Roof Mover State'),
+              //   value: data.roofMoverStatus,
+              //   onChanged: (value) {
+              //     provider.updateRoofMoverStatus(value);
+              //   },
+              // ),
             ],
           );
         }));

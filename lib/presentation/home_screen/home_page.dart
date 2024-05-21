@@ -51,9 +51,9 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.settings),
-            icon: Icon(Icons.settings_outlined),
-            label: 'Setting',
+            selectedIcon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
+            label: 'Profile',
           ),
         ],
       ),
