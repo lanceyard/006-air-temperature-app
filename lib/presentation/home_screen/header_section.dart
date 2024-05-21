@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suhu_udara/logic/provider/firebase_provider.dart';
 
 class HeaderSection extends StatefulWidget {
   const HeaderSection({super.key});
@@ -85,14 +87,28 @@ class _HeaderSectionState extends State<HeaderSection> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // first column
-                      const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.connected_tv),
-                          Text("Connected"),
-                        ],
+                      Consumer<FirebaseDataProvider>(
+                          builder: (context, provider, child) {
+                        if (provider.error) {
+                          return const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.error),
+                              Text("Failed"),
+                            ],
+                          );
+                        }
+                        return const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.connected_tv),
+                            Text("Connected"),
+                          ],
+                        );
+                      }),
+                      const SizedBox(
+                        width: 30,
                       ),
-                      const SizedBox(width: 30,),
 
                       // second column
                       Column(
@@ -107,7 +123,9 @@ class _HeaderSectionState extends State<HeaderSection> {
                           const Text("Skillion"),
                         ],
                       ),
-                      const SizedBox(width: 30,),
+                      const SizedBox(
+                        width: 30,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

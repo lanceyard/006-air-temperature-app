@@ -32,8 +32,7 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        FuzzyPage(),
-        SettingPage()
+        const SettingPage()
       ][currentPageIndex],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -41,8 +40,8 @@ class _HomeState extends State<Home> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Color(0xFF86E779),
-        backgroundColor: Color(0xfff6fff8),
+        indicatorColor: const Color(0xFF86E779),
+        backgroundColor: const Color(0xfff6fff8),
         selectedIndex: currentPageIndex,
         surfaceTintColor: Colors.transparent,
         destinations: const <Widget>[
@@ -50,11 +49,6 @@ class _HomeState extends State<Home> {
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Home',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.lightbulb),
-            icon: Icon(Icons.lightbulb_outline),
-            label: 'Fuzzy',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.settings),

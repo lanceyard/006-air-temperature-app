@@ -4,8 +4,10 @@ import 'package:suhu_udara/logic/model/firebase_data.dart';
 
 class FirebaseDataProvider extends ChangeNotifier {
   FirebaseData? _firebaseData;
+  bool _error = false;
 
   FirebaseData? get firebaseData => _firebaseData;
+  bool get error => _error;
 
   FirebaseDataProvider() {
     _fetchDataFromFirebase();
@@ -14,8 +16,12 @@ class FirebaseDataProvider extends ChangeNotifier {
   void _fetchDataFromFirebase() {
     DatabaseReference ref = FirebaseDatabase.instance.ref('/');
     ref.onValue.listen((event) {
-      final data = event.snapshot.value as Map<dynamic, dynamic>;
-      _firebaseData = FirebaseData.fromJson(Map<String, dynamic>.from(data));
+      try {
+        final data = event.snapshot.value as Map<dynamic, dynamic>;
+        _firebaseData = FirebaseData.fromJson(Map<String, dynamic>.from(data));
+      } catch (e) {
+        _error = true;
+      }
       notifyListeners();
     });
   }
@@ -25,4 +31,3 @@ class FirebaseDataProvider extends ChangeNotifier {
     ref.set(newStatus);
   }
 }
-

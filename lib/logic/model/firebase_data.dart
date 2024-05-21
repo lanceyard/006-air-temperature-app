@@ -1,6 +1,6 @@
 class FirebaseData {
-  final int airHumidity;
-  final int airTemperature;
+  final double airHumidity;
+  final double airTemperature;
   final bool isRaining;
   final int lightIntensity;
   final bool roofMoverStatus;

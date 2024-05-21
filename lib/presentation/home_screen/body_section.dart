@@ -15,7 +15,9 @@ class BodySection extends StatelessWidget {
           final data = provider.firebaseData;
           if (data == null) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: LinearProgressIndicator(
+                color: Colors.green,
+              ),
             );
           }
           return Column(
